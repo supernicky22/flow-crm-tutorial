@@ -8,6 +8,8 @@ import com.vaadin.flow.component.charts.model.DataSeries;
 import com.vaadin.flow.component.charts.model.DataSeriesItem;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.BeforeLeaveEvent;
+import com.vaadin.flow.router.BeforeLeaveObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -16,7 +18,7 @@ import javax.annotation.security.PermitAll;
 @Route(value = "dashboard", layout = MainLayout.class)
 @PageTitle("Dashboard | Vaadin CRM")
 @PermitAll
-public class DashboardView extends VerticalLayout {
+public class DashboardView extends VerticalLayout implements BeforeLeaveObserver{
     private final CrmService service;
 
     public DashboardView(CrmService service) {
@@ -41,4 +43,10 @@ public class DashboardView extends VerticalLayout {
         chart.getConfiguration().setSeries(dataSeries);
         return chart;
     }
+
+	@Override
+	public void beforeLeave(BeforeLeaveEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 }
